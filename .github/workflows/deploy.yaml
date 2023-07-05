@@ -28,7 +28,7 @@ jobs:
       working-directory: techno-tango
 
     - name: Build
-      run: ng build --configuration production
+      run: npm run build-prod
       working-directory: techno-tango
 
     - name: Run tests
