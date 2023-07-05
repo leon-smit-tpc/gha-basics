@@ -1,7 +1,10 @@
-name: CI
+name: Build Frontend
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -10,12 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build and test
-      run: |
-        cd techno-tango
-        npm install
-        npm run build
-        npm test
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: techno-tango
+
+      - name: Build
+        run: npm run build
+        working-directory: techno-tango
+
+      - name: Run tests
+        run: npm run test -- --no-watch --browsers=ChromeHeadless
+        working-directory: techno-tango
