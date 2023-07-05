@@ -33,7 +33,10 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-redeclare": "error",
+				"unused-imports/no-unused-imports": "error"
       }
     },
     {
@@ -44,20 +47,7 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {
-        "no-restricted-globals": [
-          "error",
-          {
-            "name": "fit",
-            "message": "Do not commit fit. Use describe it."
-          },
-          {
-            "name": "fdescribe",
-            "message": "Do not commit fdescribe. Use describe instead."
-          }
-        ],
-        "unused-imports/no-unused-imports": "error"
-      }
+      "rules": {}
     }
   ]
 }
