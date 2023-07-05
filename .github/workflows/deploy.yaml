@@ -34,5 +34,6 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.1
       with:
+        GITHUB_TOKEN: ${{ secrets.GHA_DEPLOY_TOKEN }}
         branch: gh-pages
         folder: techno-tango/dist/techno-tango
