@@ -28,7 +28,7 @@ jobs:
       working-directory: techno-tango
 
     - name: Run tests
-      run: npm run test --no-watch --browsers=ChromeHeadless
+      run: npm run test -- --no-watch --browsers=ChromeHeadless
       working-directory: techno-tango
 
     - name: Deploy to GitHub Pages
