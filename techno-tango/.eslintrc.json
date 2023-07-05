@@ -41,7 +41,20 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {}
+      "rules": {
+        "no-restricted-globals": [
+          "error",
+          {
+            "name": "fit",
+            "message": "Do not commit fit. Use describe it."
+          },
+          {
+            "name": "fdescribe",
+            "message": "Do not commit fdescribe. Use describe instead."
+          }
+        ],
+        "unused-imports/no-unused-imports": "error"
+      }
     }
   ]
 }
