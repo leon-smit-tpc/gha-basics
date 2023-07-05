@@ -15,4 +15,7 @@ jobs:
 
     - name: Build and test
       run: |
-      # Add your build and test commands here
+        cd techno-tango
+        npm install
+        npm run build
+        npm test
