@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'techno-tango';
+  private readonly storageKey = 'singleTabApp'; // kan in service
+  private hasSession = false;
+
+  constructor() {
+    this.checkTabUsage();
+  }
+
+  private checkTabUsage(): void {
+    const tabData = localStorage.getItem(this.storageKey);
+
+    if (tabData) {
+      this.notifyUser();
+    } else {
+      this.hasSession = true;
+      localStorage.setItem(this.storageKey, 'active')
+    }
+  }
+
+  private notifyUser() {
+    alert('hey! mag niet!');
+  }
+
+  @HostListener('window:beforeunload')
+  private handleTabClosing(): void {
+    if (this.hasSession) {
+      localStorage.removeItem(this.storageKey);
+    }
+  }
 }
