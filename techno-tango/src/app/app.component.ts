@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { TabControlService } from './tab-control/tab-control.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'techno-tango';
+  constructor(private tabControlService: TabControlService) {  }
+
+  @HostListener('window:beforeunload')
+  private handleTabClosing(): void {
+    this.tabControlService.handleTabClosing();
+  }
 }
